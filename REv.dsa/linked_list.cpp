@@ -15,12 +15,12 @@ class Linked_list{
         Linked_list();
         void Insert_start(int=0);
         void Insert_last(int=0);
-        void Insert_at(Node *,int);
+        void Insert_after(Node *,int);
         void print();
         void delete_first();
         void delete_last();
         void edit(int,int);
-        void search(int);
+        Node * search(int);
         bool is_exist(int);
         void delete_value(int);
         int count();
@@ -42,10 +42,10 @@ bool Linked_list::is_exist(int value)
 
     
 }
-void Linked_list::search(int value)
+Node * Linked_list::search(int value)
 {
     
-    int node_no=0;
+    
     try{
         if(start==NULL)
             throw 1;
@@ -53,18 +53,21 @@ void Linked_list::search(int value)
         
         while(t)
         {
-            node_no++;
+            
             if(t->item==value)
             {
-                cout<<value<<" Indexed at Node :- "<<node_no<<endl;
-                break;
+                return t;
             }
-            t=t->next;
+            
+            else{
+                t=t->next;
+            }
         
             
         }
-        if(t==NULL)
-            cout<<"Value Not Found !!"<<endl;
+        if(!t)
+            cout<<"value Not fOUND"<<endl;
+        
         
     }
     catch(int e)
@@ -145,42 +148,12 @@ Linked_list::Linked_list(Linked_list &L)
         2. new list kew start me NULL
         3. 
     */
-    try{
-        if(L.start==NULL)
-            throw 1;
-        
-        else{
-            Node *prev=L.start;
-            start =new Node;
-            //start->item=L.start->item;
-            //start->next=NULL;
-            while(prev)
-            {
-                Node *t=new Node;
-                if(start->next==NULL)
-                    start=t;
-                Node *p=start;
-                
-                while(p->next!=NULL)
-                    p=p->next;
-                t->item=prev->item;
-                p->next=t;
-                t->next=NULL;
-                
-                
-                
-                
-                
-                prev=prev->next;
-            }
-
-        }
-        
-    }
-    catch(int e)
+    Node *t=L.start;
+    start=NULL;
+    while(t)
     {
-        if(e==1)
-            cout<<"Empty Reference List !!! "<<endl;
+        Insert_last(t->item);
+        t=t->next;
     }
     
 
@@ -240,13 +213,20 @@ void Linked_list::delete_last()
     
 
 }
-void Linked_list::Insert_at(Node *t,int data)
+void Linked_list::Insert_after(Node *t,int data)
 {
     //1. prepare a node 1st.
     //2. agar node entered is last node
     //3. agar node entered is 1st node.
     //4. agar start == Null hai. created nhi hai list
     //5.
+    Node*n=new Node;
+    n->item=data;
+    
+    n->next=t->next;
+    t->next=n;
+
+    
      
     
 }
@@ -321,10 +301,12 @@ int main()
    l.delete_first();// deletes 55;
    l.delete_last();// will delete 15;
    l.edit(15,35);
-   l.search(10);
+   Node *p=l.search(10);
+    l.Insert_after(p,69);
    l.print();
-   //Linked_list k=l;
-   //k.print();
+   Linked_list k=l;
+    k.print();
+    
    //cout<<k.count()<<endl;
 
 
