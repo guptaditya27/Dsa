@@ -21,7 +21,7 @@ class Linkedlist
         void Deletefirst();
         void Deletelast();
         void Delete_particular(node *);
-        //~Linkedlist();
+        ~Linkedlist();
         Linkedlist(Linkedlist &);
         Linkedlist& operator=(Linkedlist &);
         void print();

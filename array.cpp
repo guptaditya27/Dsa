@@ -219,6 +219,7 @@ void Array::append(int data)
     {
         lastindex++;
         ptr[lastindex]=data;
+        
     }
     else{
         cout<<"Array overflow!!!"<<endl;
