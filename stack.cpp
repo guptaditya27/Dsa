@@ -35,13 +35,17 @@ int stack::size()
 }
 void stack::reverse()
 {
-    int i=0,j=top;
-    while(i=top&&j>=0)
+    if(ptr!=NULL)
     {
-        int w=ptr[i];
-        ptr[i]=ptr[j];
-        ptr[j]=w;
-        i+=2,j-=2;
+        int i=0,j=top;
+        while(i<=(top/2))
+        {
+            int w= ptr[i];
+            ptr[i]=ptr[j];
+            ptr[j]=w;
+            i++;
+            j--;
+        }
     }
 
 }
@@ -205,6 +209,7 @@ int main()
    s.push(20);
    s.push(13);
    s.push(22);
+   s.push(11);
    cout<<s.peek()<<endl;
    s.pop();
    s.print();
