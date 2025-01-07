@@ -29,10 +29,8 @@ class Queue
 };
 void Queue::reverse()
 {
-    /*Node *t=front;
-    front=rear;      wrong appch kyuki i have next pointer so agli values fetch nhi hoge online last value aajyegi sirf
-    rear=t;*/
-
+    // pta nhi kaise hoga.
+    
     
 }
 Queue& Queue::operator =(Queue & Q)
