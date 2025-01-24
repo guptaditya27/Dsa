@@ -11,6 +11,7 @@ struct Node {
 class Bst {
 private:
     Node* root;
+protected:
     void recpr(Node*);// recursive preorder.
     void recinor(Node*);// recursive inoreder.
     void recpor(Node*);// recursive postorder.
